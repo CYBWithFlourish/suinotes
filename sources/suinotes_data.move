@@ -4,7 +4,7 @@ use std::string::String;
 
 
 const TEXT: u8 = 0;
-const EN_TEXT: u8 = 1;
+const ENCRYPTED_TEXT: u8 = 1;
 
 public struct Data has store {
     data_type: u8,
@@ -12,7 +12,7 @@ public struct Data has store {
 }
 
 
-public fun create(data_type: u8, value: String): Data {
+public fun create_notes(data_type: u8, value: String): Data {
     let data = Data {
         data_type,
         value,
@@ -21,6 +21,6 @@ public fun create(data_type: u8, value: String): Data {
     data
 }
 
-public fun edit(data: &mut Data, content: String) {
+public fun edit_notes(data: &mut Data, content: String) {
     data.value = content;
 }
