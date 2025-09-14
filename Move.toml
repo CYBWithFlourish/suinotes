@@ -1,7 +1,8 @@
 [package]
 name = "suinotes"
 edition = "2024.beta" # edition = "legacy" to use legacy (pre-2024) Move
-# license = ""           # e.g., "MIT", "GPL", "Apache 2.0"
+license = "Apache 2.0"           # e.g., "MIT", "GPL", "Apache 2.0"
+published-at = "0x0caf27a95f7256993225755e3f13aa5842bfec6ecb0fb71e8edcb12ed92e0d16" 
 # authors = ["..."]      # e.g., ["Joe Smith (joesmith@noemail.com)", "John Snow (johnsnow@noemail.com)"]
 
 [dependencies]

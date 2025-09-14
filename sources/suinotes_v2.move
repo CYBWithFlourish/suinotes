@@ -25,11 +25,29 @@ public fun create_notes(title: String, data: String, clock: &Clock, ctx: &mut Tx
     note
 }
 
-public fun edit_note(note: &mut Note, content: String) {
+
+public fun create_notes_v2(title: String, data: String, clock: &Clock, ctx: &mut TxContext): Note {
+    let data = df::create_notes(0, data);
+
+    let note = Note {
+        id: object::new(ctx),
+        title,
+        content: data,
+        timestamp: clock.timestamp_ms(),
+    };
+
+    note
+}
+
+public fun edit_notes(note: &mut Note, content: String) {
     note.content.edit(content);
 }
 
-// public fun delete_note(note: Note) {
-//     let Note { id, .. } = note;
-//     id.delete();
-// }
+public fun edit_notes_v2(note: &mut Note, content: String) {
+    note.content.edit(content);
+}
+
+ public fun delete_note(note: Note) {
+     let Note { id, .. } = note;
+    id.delete();
+ }

@@ -14,6 +14,21 @@ public struct Note has key, store {
 }
 
 public fun create_notes(title: String, data: String, clock: &Clock, ctx: &mut TxContext): Note {
+    let data = df::create_notes(0, data);
+
+    let note = Note {
+        id: object::new(ctx),
+        title,
+        content: data,
+        timestamp: clock.timestamp_ms(),
+        owner: ctx.sender(),
+    };
+
+    note
+}
+
+
+public fun create_notes_v2(title: String, data: String, clock: &Clock, ctx: &mut TxContext): Note {
     let data = df::create(0, data);
 
     let note = Note {
@@ -31,11 +46,15 @@ public fun edit_notes(note: &mut Note, content: String) {
     note.content.edit(content);
 }
 
+public fun edit_notes_2(note: &mut Note, content: String) {
+    note.content.edit_notes(content);
+}
+
 public fun seal_approve_notes(note: &Note, ctx: &mut TxContext): bool {
     if (note.owner == ctx.sender()) { true } else { false }
 }
 
-// public fun delete_notes(note: Note) {
-//     let Note { id, .. } = note;
-//     id.delete();
-// }
+public fun delete_notes(note: Note) {
+     let Note { id, .. } = note;
+     id.delete();
+}

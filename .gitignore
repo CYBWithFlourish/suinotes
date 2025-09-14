@@ -1,0 +1,16 @@
+# Ignore Move build artifacts
+/build/
+move.toml.lock
+
+# Node.js dependencies and build output (if any)
+node_modules/
+dist/
+*.log
+
+# Editor and OS files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+.env
